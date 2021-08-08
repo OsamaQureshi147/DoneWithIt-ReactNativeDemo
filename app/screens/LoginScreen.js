@@ -1,15 +1,10 @@
 import React from 'react'
 import { Image, StyleSheet } from 'react-native'
-import { Formik } from 'formik'
 
 
-import AppTextInput from '../components/AppTextInput'
-import AppButton from '../components/AppButton'
 import Screen from '../components/Screen'
 import { loginValidationSchema } from '../utilities/helpers'
-import ErrorMessage from '../components/ErrorMessage'
-
-
+import { AppForm, AppFormField, SubmitButton } from '../components/forms'
 
 const LoginScreen = () => {
     return (
@@ -18,43 +13,35 @@ const LoginScreen = () => {
                 source={require('../assets/logo-red.png')}
                 style={styles.icon}
             />
-            <Formik
+            <AppForm
                 initialValues={{ email: '', password: '' }}
                 onSubmit={values => console.log(values)}
                 validationSchema={loginValidationSchema}
             >
-                {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
-                    <>
-                        <AppTextInput
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            icon="email"
-                            keyboardType="email-address"
-                            onChangeText={handleChange('email')}
-                            onBlur={() => setFieldTouched('email')}
-                            placeholder="Email"
-                            contentType="emailAddress"
-                        // contentType is a platform dependent prop works only in iOS, it automatically adds email from keychain
-                        />
-                        <ErrorMessage error={errors.email} visible={touched.email} />
-                        <AppTextInput
-                            autoCapitalize="none"
-                            autoCorrect={false}
-                            icon="lock"
-                            placeholder="Password"
-                            onBlur={() => setFieldTouched('password')}
-                            onChangeText={handleChange('password')}
-                            secureTextEntry
-                            contentType="password"
-                        />
-                        <ErrorMessage error={errors.password} visible={touched.password} />
-                        <AppButton
-                            title="Login"
-                            onPress={handleSubmit}
-                        />
-                    </>
-                )}
-            </Formik>
+
+                <AppFormField
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    icon="email"
+                    keyboardType="email-address"
+                    name='email'
+                    placeholder="Email"
+                    contentType="emailAddress"
+                // contentType is a platform dependent prop works only in iOS, it automatically adds email from keychain
+                />
+
+                <AppFormField
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    icon="lock"
+                    name='password'
+                    placeholder="Password"
+                    secureTextEntry
+                    contentType="password"
+                />
+                <SubmitButton title="Login" />
+
+            </AppForm>
 
         </Screen>
     )
