@@ -10,8 +10,6 @@ import Screen from '../components/Screen';
 import { addListingValidationSchema } from '../utilities/helpers';
 
 
-
-
 const categories = [
     { label: 'Furniture', value: 1 },
     { label: 'Clothing', value: 2 },
@@ -49,6 +47,7 @@ const ListingEditScreen = () => {
                     multiline
                     name='description'
                     placeholder='Description'
+                    numberOfLines={3} //native api for android
                 />
                 <SubmitButton title='Post' />
             </AppForm>

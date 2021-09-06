@@ -6,6 +6,7 @@ import defaultStyles from '../config/styles'
 import AppText from './AppText';
 import PickerItem from './PickerItem';
 
+
 const AppPicker = ({ icon, onSelectItem, items, placeholder, selectedItem }) => {
 
     const [modalVisible, setModalVisible] = useState(false)
@@ -23,7 +24,12 @@ const AppPicker = ({ icon, onSelectItem, items, placeholder, selectedItem }) => 
                             style={styles.icon}
                         />
                     }
-                    <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+                    {
+                        selectedItem ?
+                            (<AppText style={styles.text}>{selectedItem.label}</AppText>)
+                            :
+                            (<AppText style={styles.placeholder}>{placeholder}</AppText>)
+                    }
                     <MaterialCommunityIcons
                         name="chevron-down"
                         size={25}
@@ -61,6 +67,10 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         padding: 15,
         marginVertical: 10
+    },
+    placeholder: {
+        flex: 1,
+        color: defaultStyles.colors.medium
     },
     text: {
         flex: 1
