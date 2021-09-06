@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import CategoryPickerItem from '../components/CategoryPickerItem';
 import {
     AppForm,
     AppFormField,
@@ -7,13 +8,55 @@ import {
     SubmitButton
 } from '../components/forms';
 import Screen from '../components/Screen';
+import colors from '../config/colors';
 import { addListingValidationSchema } from '../utilities/helpers';
 
 
 const categories = [
-    { label: 'Furniture', value: 1 },
-    { label: 'Clothing', value: 2 },
-    { label: 'Camera', value: 3 }
+    {
+        backgroundColor: colors.red,
+        icon: 'floor-lamp',
+        label: 'Furniture',
+        value: 1
+    },
+    { label: 'Cars', icon: 'car', backgroundColor: colors.orange, value: 1 },
+    {
+        label: 'Cameras',
+        icon: 'camera',
+        backgroundColor: colors.yellow,
+        value: 1
+    },
+    { label: 'Games', icon: 'cards', backgroundColor: colors.green, value: 2 },
+    {
+        label: 'Clothing',
+        icon: 'shoe-heel',
+        backgroundColor: colors.cyan,
+        value: 3
+    },
+    {
+        label: 'Sports',
+        icon: 'basketball',
+        backgroundColor: colors.brightBlue,
+        value: 3
+    },
+    {
+        label: 'Movies & Music',
+        icon: 'headphones',
+        backgroundColor: colors.softBlue,
+        value: 3
+    },
+    {
+        label: 'Books',
+        icon: 'book-open-variant',
+        backgroundColor: colors.purple,
+        value: 2
+    },
+    {
+        label: 'Other',
+        icon: 'folder-outline',
+        backgroundColor: colors.grey,
+        value: 1
+    }
 ];
 
 const ListingEditScreen = () => {
@@ -40,6 +83,8 @@ const ListingEditScreen = () => {
                 <AppFormPicker
                     items={categories}
                     name='category'
+                    numberOfColumns={3}
+                    PickerItemComponent={CategoryPickerItem}
                     placeholder='Category'
                 />
                 <AppFormField

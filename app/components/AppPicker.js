@@ -5,9 +5,18 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import defaultStyles from '../config/styles'
 import AppText from './AppText';
 import PickerItem from './PickerItem';
+import colors from '../config/colors';
 
 
-const AppPicker = ({ icon, onSelectItem, items, placeholder, selectedItem }) => {
+const AppPicker = ({
+    icon,
+    onSelectItem,
+    numberOfColumns = 1,
+    PickerItemComponent = PickerItem,
+    items,
+    placeholder,
+    selectedItem,
+}) => {
 
     const [modalVisible, setModalVisible] = useState(false)
 
@@ -38,13 +47,14 @@ const AppPicker = ({ icon, onSelectItem, items, placeholder, selectedItem }) => 
                 </View>
             </TouchableWithoutFeedback>
             <Modal visible={modalVisible} animationType="slide" >
-                <Button title="Close" onPress={() => setModalVisible(false)} />
+                <Button color={colors.primary} title="Close" onPress={() => setModalVisible(false)} />
                 <FlatList
                     data={items}
                     keyExtractor={item => item.value.toString()}
+                    numColumns={numberOfColumns}
                     renderItem={({ item }) =>
-                        <PickerItem
-                            key={item.value}
+                        <PickerItemComponent
+                            item={item}
                             label={item.label}
                             onPress={() => {
                                 setModalVisible(false);
