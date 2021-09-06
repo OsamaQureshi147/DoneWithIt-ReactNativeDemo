@@ -4,9 +4,9 @@ import { useFormikContext } from 'formik'
 
 
 import AppTextInput from '../AppTextInput'
-import ErrorMessage from './ErrorMessage'
+import { ErrorMessage } from './ErrorMessage'
 
-const AppFormField = ({ name, ...props }) => {
+export const AppFormField = ({ name, ...props }) => {
     const { setFieldTouched, handleChange, errors, touched } = useFormikContext()
     return (
         <>
@@ -20,6 +20,5 @@ const AppFormField = ({ name, ...props }) => {
     )
 }
 
-export default AppFormField
 
 const styles = StyleSheet.create({})

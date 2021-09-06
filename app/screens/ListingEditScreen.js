@@ -1,7 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native'
-import * as Yup from 'yup';
-
+import { StyleSheet } from 'react-native';
 import {
     AppForm,
     AppFormField,
@@ -9,14 +7,10 @@ import {
     SubmitButton
 } from '../components/forms';
 import Screen from '../components/Screen';
+import { addListingValidationSchema } from '../utilities/helpers';
 
 
-const validationSchema = Yup.object().shape({
-    title: Yup.string().required().min(1).label('Title'),
-    price: Yup.number().required().min(1).max(10000).label('Price'),
-    description: Yup.string().label('Description'),
-    category: Yup.object().required().nullable().label('Category')
-});
+
 
 const categories = [
     { label: 'Furniture', value: 1 },
@@ -36,27 +30,28 @@ const ListingEditScreen = () => {
                     category: null
                 }}
                 onSubmit={(values) => console.log(values)}
-                validationSchema={validationSchema}
-            />
-            <AppFormField maxLength={255} name='title' placeholder='Title' />
-            <AppFormField
-                keyboardType='numeric'
-                maxLength={8}
-                name='price'
-                placeholder='Price'
-            />
-            <AppFormPicker
-                items={categories}
-                name='category'
-                placeholder='Category'
-            />
-            <AppFormField
-                maxLength={255}
-                multiline
-                name='description'
-                placeholder='Description'
-            />
-            <SubmitButton title='Post' />
+                validationSchema={addListingValidationSchema}
+            >
+                <AppFormField maxLength={255} name='title' placeholder='Title' />
+                <AppFormField
+                    keyboardType='numeric'
+                    maxLength={8}
+                    name='price'
+                    placeholder='Price'
+                />
+                <AppFormPicker
+                    items={categories}
+                    name='category'
+                    placeholder='Category'
+                />
+                <AppFormField
+                    maxLength={255}
+                    multiline
+                    name='description'
+                    placeholder='Description'
+                />
+                <SubmitButton title='Post' />
+            </AppForm>
         </Screen>
     );
 }
@@ -67,8 +62,6 @@ export default ListingEditScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f8f4f4',
         padding: 20,
-        paddingTop: 100,
     }
 })

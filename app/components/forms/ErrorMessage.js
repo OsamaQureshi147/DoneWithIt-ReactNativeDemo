@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import AppText from '../AppText'
 
-const ErrorMessage = ({ error, visible }) => {
+export const ErrorMessage = ({ error, visible }) => {
     if (!visible || !error) return null
 
     return (
@@ -10,10 +10,10 @@ const ErrorMessage = ({ error, visible }) => {
     )
 }
 
-export default ErrorMessage
 
 const styles = StyleSheet.create({
     error: {
-        color: 'red'
+        color: 'red',
+        maxHeight: 30,
     }
 })
