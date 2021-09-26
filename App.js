@@ -13,24 +13,13 @@ import MessagesScreen from './app/screens/MessagesScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AccountScreen from './app/screens/AccountScreen';
+import ImageInput from './app/components/ImageInput';
 
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
   const requestPermission = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
     if (!granted) alert('You need to enable permissions to access the library')
-  }
-
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync()
-      if (!result.cancelled)
-        setImageUri(result.uri)
-    } catch (error) {
-      console.log("Error picking up an image", error)
-    }
-
   }
 
   useEffect(() => {
@@ -39,14 +28,7 @@ export default function App() {
 
   return (
     <Screen>
-      <Button title="Select Image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 100, height: 100 }} />
-      {/* <ListingEditScreen /> */}
-      {/* <LoginScreen /> */}
-      {/* <RegisterScreen /> */}
-      {/* <AccountScreen /> */}
-      {/* <WelcomeScreen></WelcomeScreen> */}
-      {/* <MessagesScreen /> */}
+      <ImageInput />
     </Screen>
   );
 }
