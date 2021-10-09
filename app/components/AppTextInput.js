@@ -9,7 +9,7 @@ const AppTextInput = ({ icon, ...props }) => {
         <View style={styles.container} >
             {icon && <MaterialCommunityIcons name={icon} size={25} color={defaultStyles.colors.medium} style={styles.icon} />}
             <TextInput
-                placeholderTextColor={defaultStyles.colors.medium}
+                placeholderTextColor={defaultStyles.colors.mediumGray}
                 style={defaultStyles.text}
                 {...props}
             />
@@ -21,7 +21,8 @@ export default AppTextInput
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: defaultStyles.colors.light,
+        backgroundColor: defaultStyles.colors.lightGray,
+        borderRadius: 5,
         flexDirection: 'row',
         width: '100%',
         borderRadius: 25,

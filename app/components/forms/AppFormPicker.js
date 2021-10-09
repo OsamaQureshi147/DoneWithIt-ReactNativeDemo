@@ -13,7 +13,6 @@ export const AppFormPicker = ({
     PickerItemComponent
 }) => {
     const { errors, setFieldValue, touched, values } = useFormikContext();
-    console.log("placeholder", placeholder);
 
     return (
         <>

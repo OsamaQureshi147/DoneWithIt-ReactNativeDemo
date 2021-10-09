@@ -7,6 +7,7 @@ import {
     AppFormPicker,
     SubmitButton
 } from '../components/forms';
+import AppFormImagePicker from '../components/forms/AppFormImagePicker';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
 import { addListingValidationSchema } from '../utilities/helpers';
@@ -19,43 +20,53 @@ const categories = [
         label: 'Furniture',
         value: 1
     },
-    { label: 'Cars', icon: 'car', backgroundColor: colors.orange, value: 1 },
+    {
+        label: 'Cars',
+        icon: 'car',
+        backgroundColor: colors.orange,
+        value: 2
+    },
     {
         label: 'Cameras',
         icon: 'camera',
         backgroundColor: colors.yellow,
-        value: 1
+        value: 3
     },
-    { label: 'Games', icon: 'cards', backgroundColor: colors.green, value: 2 },
+    {
+        label: 'Games',
+        icon: 'cards',
+        backgroundColor: colors.green,
+        value: 4
+    },
     {
         label: 'Clothing',
         icon: 'shoe-heel',
         backgroundColor: colors.cyan,
-        value: 3
+        value: 5
     },
     {
         label: 'Sports',
         icon: 'basketball',
         backgroundColor: colors.brightBlue,
-        value: 3
+        value: 6
     },
     {
         label: 'Movies & Music',
         icon: 'headphones',
         backgroundColor: colors.softBlue,
-        value: 3
+        value: 7
     },
     {
         label: 'Books',
         icon: 'book-open-variant',
         backgroundColor: colors.purple,
-        value: 2
+        value: 8
     },
     {
         label: 'Other',
         icon: 'folder-outline',
         backgroundColor: colors.grey,
-        value: 1
+        value: 9
     }
 ];
 
@@ -68,11 +79,13 @@ const ListingEditScreen = () => {
                     title: '',
                     price: '',
                     description: '',
-                    category: null
+                    category: null,
+                    images: []
                 }}
                 onSubmit={(values) => console.log(values)}
                 validationSchema={addListingValidationSchema}
             >
+                <AppFormImagePicker name='images' />
                 <AppFormField maxLength={255} name='title' placeholder='Title' />
                 <AppFormField
                     keyboardType='numeric'

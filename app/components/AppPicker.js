@@ -71,7 +71,7 @@ export default AppPicker
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: defaultStyles.colors.light,
+        backgroundColor: defaultStyles.colors.lightGray,
         flexDirection: 'row',
         width: '100%',
         borderRadius: 25,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     },
     placeholder: {
         flex: 1,
-        color: defaultStyles.colors.medium
+        color: defaultStyles.colors.mediumGray
     },
     text: {
         flex: 1

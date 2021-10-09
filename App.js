@@ -14,22 +14,13 @@ import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AccountScreen from './app/screens/AccountScreen';
 import ImageInput from './app/components/ImageInput';
+import ImageInputList from './app/components/ImageInputList';
 
 
 export default function App() {
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted) alert('You need to enable permissions to access the library')
-  }
-
-  useEffect(() => {
-    requestPermission();
-  }, [])
 
   return (
-    <Screen>
-      <ImageInput />
-    </Screen>
+    <ListingEditScreen />
   );
 }
 
