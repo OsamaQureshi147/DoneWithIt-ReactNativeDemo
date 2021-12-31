@@ -6,7 +6,7 @@ import Screen from '../components/Screen'
 import { loginValidationSchema } from '../utilities/helpers'
 import { AppForm, AppFormField, SubmitButton } from '../components/forms'
 
-const LoginScreen = () => {
+export const LoginScreen = () => {
     return (
         <Screen style={styles.container}>
             <Image
@@ -46,8 +46,6 @@ const LoginScreen = () => {
         </Screen>
     )
 }
-
-export default LoginScreen
 
 const styles = StyleSheet.create({
     container: {

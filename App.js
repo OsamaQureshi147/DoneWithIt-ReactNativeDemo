@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Switch, Button, Image } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
 
-import Screen from './app/components/Screen';
-import ListingEditScreen from './app/screens/ListingEditScreen';
-import LoginScreen from './app/screens/LoginScreen';
-import RegisterScreen from './app/screens/RegisterScreen';
-import HomeScreen from './app/screens/HomeScreen';
-import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
-import ListingsScreen from './app/screens/ListingsScreen';
-import MessagesScreen from './app/screens/MessagesScreen';
-import ViewImageScreen from './app/screens/ViewImageScreen';
-import WelcomeScreen from './app/screens/WelcomeScreen';
-import AccountScreen from './app/screens/AccountScreen';
-import ImageInput from './app/components/ImageInput';
-import ImageInputList from './app/components/ImageInputList';
-
+import { AuthNavigator } from './app/navigation/AuthNavigator';
+import { navigationTheme } from './app/navigation/navigationTheme';
 
 export default function App() {
 
   return (
-    <ListingEditScreen />
+    <NavigationContainer theme={navigationTheme}>
+      <AuthNavigator />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

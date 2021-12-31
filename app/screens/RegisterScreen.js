@@ -6,7 +6,7 @@ import Screen from '../components/Screen'
 import { registerValidationSchema } from '../utilities/helpers'
 import { AppForm, AppFormField, SubmitButton } from '../components/forms'
 
-const RegisterScreen = () => {
+export const RegisterScreen = () => {
     return (
         <Screen style={styles.container}>
 
@@ -51,8 +51,6 @@ const RegisterScreen = () => {
         </Screen>
     )
 }
-
-export default RegisterScreen
 
 const styles = StyleSheet.create({
     container: {
